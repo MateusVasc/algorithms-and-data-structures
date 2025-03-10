@@ -51,23 +51,89 @@ Uma **Linked List** é uma estrutura de dados linear composta por uma sequência
 
 ---
 
-## ⚙️ **Funções Implementadas**
+## 📌 Desafio: Implementando uma Singly Linked List
 
-Abaixo estão as principais operações implementadas para este projeto:
+### Descrição
 
-### **Singly Linked List**
-- **Criação da lista**.  
-- **Inserção**: início, meio, fim.  
-- **Remoção**: início, meio, fim.  
-- **Busca por valor**.  
-- **Exibição de todos os elementos**.  
+Seu desafio é implementar uma **singly linked list (lista encadeada simples)** em **C**. Diferente de um array, uma lista encadeada é composta por **nós**, onde cada nó contém um **valor** e um **ponteiro** para o próximo nó na sequência. O objetivo é praticar a manipulação de ponteiros, alocação dinâmica de memória e operações com listas encadeadas.
 
-### **Doubly Linked List**
-- **Criação da lista**.  
-- **Inserção**: início, meio, fim.  
-- **Remoção**: início, meio, fim.  
-- **Busca por valor** (bidirecional).  
-- **Exibição de todos os elementos** (em ordem e reversa).  
+Sua implementação deve suportar as seguintes operações:
+
+1. Criar uma lista encadeada vazia  
+2. Inserir um elemento no final (push back)  
+3. Inserir um elemento no início (push front)  
+4. Remover o último elemento (pop back)  
+5. Remover o primeiro elemento (pop front)  
+6. Buscar um elemento na lista  
+7. Imprimir a lista  
+8. Liberar toda a memória alocada 
+
+### Requisitos
+
+Crie uma estrutura `LinkedList` com:
+
+- Um ponteiro para o primeiro nó (`head`)  
+- Um contador para rastrear o número de elementos (`size`)  
+
+Cada `Node` deve conter:
+
+- Um valor inteiro (`data`)  
+- Um ponteiro para o próximo nó (`next`) 
+
+### Funções a Implementar
+
+| Função | Descrição |
+| ----------- | ----------- |
+| `LinkedList* create_list()` | Cria uma lista encadeada vazia |
+| `void push_back(LinkedList* list, int val)` | Adiciona um elemento ao final da lista |
+| `void push_front(LinkedList* list, int val)` | Adiciona um elemento ao início da lista |
+| `void pop_back(LinkedList* list)` | Remove o último elemento da lista |
+| `void pop_front(LinkedList* list)` | Remove o primeiro elemento da lista |
+| `int find(LinkedList* list, int val)` | Retorna `1` se o valor existir na lista, caso contrário, `0` |
+| `void print_list(LinkedList* list)` | Imprime todos os elementos da lista |
+| `void free_list(LinkedList* list)` | Libera toda a memória alocada |
+
+## Exemplo de Uso
+
+```
+LinkedList* list = create_list();  
+
+push_back(list, 10);  
+push_back(list, 20);  
+push_back(list, 30);  
+print_list(list); // Saída esperada: 10 -> 20 -> 30 -> NULL  
+
+push_front(list, 5);  
+print_list(list); // Saída esperada: 5 -> 10 -> 20 -> 30 -> NULL  
+
+pop_back(list);  
+print_list(list); // Saída esperada: 5 -> 10 -> 20 -> NULL  
+
+pop_front(list);  
+print_list(list); // Saída esperada: 10 -> 20 -> NULL  
+
+printf("Find 10: %d\n", find(list, 10)); // Saída esperada: 1  
+printf("Find 50: %d\n", find(list, 50)); // Saída esperada: 0  
+
+free_list(list);
+```
+
+## Saída esperada
+
+```
+10 -> 20 -> 30 -> NULL  
+5 -> 10 -> 20 -> 30 -> NULL  
+5 -> 10 -> 20 -> NULL  
+10 -> 20 -> NULL  
+Find 10: 1  
+Find 50: 0  
+```
+
+## 🔥 Desafios Extras (Opcional)
+
+1. Implementar uma Doubly Linked List (`Lista duplamente encadeada`) com ponteiros `next` and `prev`.
+2. Implementar uma função `reverse()` que inverte uma lista encadeada.
+3. Implemente uma função `sort()` que mantém os elementos ordenados.
 
 ---
 
