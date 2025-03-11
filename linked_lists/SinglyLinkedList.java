@@ -67,6 +67,42 @@ public class SinglyLinkedList {
         this.head = new Node(val, this.head);
         this.size++;
     }
+
+    public void popBack() {
+        if (this.size == 0) {
+            return;
+        }
+
+        if (this.size == 1) {
+            this.head = null;
+            this.size--;
+            return;
+        }
+
+        Node curr = this.head;
+
+        while (curr.next.next != null) {
+            curr = curr.next;
+        }
+
+        curr.next = null;
+        this.size--;
+    }
+
+    public void popFront() {
+        if (this.size == 0) {
+            return;
+        }
+
+        if (this.size == 1) {
+            this.head = null;
+            this.size--;
+            return;
+        }
+
+        this.head = this.head.next;
+        this.size--;
+    }
     
     public static void main(String[] args) {
         System.out.println("=== Testing SinglyLinkedList ===");
@@ -90,7 +126,15 @@ public class SinglyLinkedList {
         list.pushFront(3);
         list.pushFront(1);
 
+        // Checking list size after insertions
         System.out.println("Size after insertions: " + list.getSize()); // Expected: 6
+
+        // Adding at the beginning
+        list.popBack();
+        list.popFront();
+
+        // Checking list size after removals
+        System.out.println("Size after removals: " + list.getSize()); // Expected: 4
     
         // Traversing and printing the list
         System.out.print("List elements: ");
@@ -99,6 +143,6 @@ public class SinglyLinkedList {
             System.out.print(curr.data + " -> ");
             curr = curr.next;
         }
-        System.out.println("NULL"); // Expected: 1 -> 3 -> 5 -> 10 -> 20 -> 30 -> NULL
+        System.out.println("NULL"); // Expected: 3 -> 5 -> 10 -> 20 -> NULL
     }
 }
