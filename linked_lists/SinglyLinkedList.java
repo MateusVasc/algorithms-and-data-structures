@@ -56,6 +56,17 @@ public class SinglyLinkedList {
         curr.next = new Node(val);
         this.size++;
     }
+
+    public void pushFront(int val) {
+        if (this.size == 0) {
+            this.head = new Node(val);
+            this.size++;
+            return;
+        }
+
+        this.head = new Node(val, this.head);
+        this.size++;
+    }
     
     public static void main(String[] args) {
         System.out.println("=== Testing SinglyLinkedList ===");
@@ -73,6 +84,13 @@ public class SinglyLinkedList {
     
         // Checking list size after insertions
         System.out.println("Size after insertions: " + list.getSize()); // Expected: 3
+
+        // Adding at the beginning
+        list.pushFront(5);
+        list.pushFront(3);
+        list.pushFront(1);
+
+        System.out.println("Size after insertions: " + list.getSize()); // Expected: 6
     
         // Traversing and printing the list
         System.out.print("List elements: ");
@@ -81,6 +99,6 @@ public class SinglyLinkedList {
             System.out.print(curr.data + " -> ");
             curr = curr.next;
         }
-        System.out.println("NULL"); // Expected: 10 -> 20 -> 30 -> NULL
+        System.out.println("NULL"); // Expected: 1 -> 3 -> 5 -> 10 -> 20 -> 30 -> NULL
     }
 }
