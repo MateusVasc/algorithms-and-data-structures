@@ -9,7 +9,7 @@ typedef struct Node
 typedef struct SinglyLinkedList
 {
     Node* head;
-    int size;
+    size_t size;
 } SinglyLinkedList;
 
 int main()
