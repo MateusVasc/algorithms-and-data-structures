@@ -103,6 +103,63 @@ public class SinglyLinkedList {
         this.head = this.head.next;
         this.size--;
     }
+
+    public boolean find(int val) {
+        if (this.size == 0) {
+            return false;
+        }
+
+        Node curr = this.head;
+
+        while (curr != null) {
+            if (curr.data == val) {
+                return true;
+            }
+            
+            curr = curr.next;
+        }
+
+        return false;
+    }
+
+    public void printList() {
+        if (this.size == 0) {
+            System.out.println("NULL");
+            return;
+        }
+
+        System.out.print("List elements: ");
+
+        Node curr = this.head;
+
+        while (curr != null) {
+            System.out.print(curr.data + " -> ");
+            curr = curr.next;
+        }
+
+        System.out.println("NULL");
+    }
+
+    // Java's GC will eventually clean the memory eventually
+    public void freeList() {
+        if (this.size > 0) {
+            this.head = null;
+            this.size = 0;
+        }
+    }
+
+    public void freeListFaster() {
+        Node curr = this.head;
+    
+        while (curr != null) {
+            Node temp = curr;
+            curr = curr.next;
+            temp.next = null;
+        }
+
+        this.head = null;
+        this.size = 0;
+    }
     
     public static void main(String[] args) {
         System.out.println("=== Testing SinglyLinkedList ===");
@@ -129,20 +186,25 @@ public class SinglyLinkedList {
         // Checking list size after insertions
         System.out.println("Size after insertions: " + list.getSize()); // Expected: 6
 
-        // Adding at the beginning
+        // Removing at the beginning and at the end
         list.popBack();
         list.popFront();
 
         // Checking list size after removals
         System.out.println("Size after removals: " + list.getSize()); // Expected: 4
-    
-        // Traversing and printing the list
-        System.out.print("List elements: ");
-        Node curr = list.getHead();
-        while (curr != null) {
-            System.out.print(curr.data + " -> ");
-            curr = curr.next;
-        }
-        System.out.println("NULL"); // Expected: 3 -> 5 -> 10 -> 20 -> NULL
+
+        // Checking find
+        System.out.println("Found? " + list.find(20)); // Expected: True
+
+        // Checking find
+        System.out.println("Found? " + list.find(50)); // Expected: False
+
+        list.printList(); // Expected: 3 -> 5 -> 10 -> 20 -> NULL
+
+        // Removes the list
+        // list.freeList(); // NULL
+        list.freeListFaster(); // NULL
+
+        list.printList(); // Expected: NULL
     }
 }
