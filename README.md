@@ -1,6 +1,6 @@
 # Algoritmos e Estruturas de Dados
 
-Este repositório documenta toda minha pesquisa e implementação de **algoritmos e estruturas de dados** utilizando a inguagem **C**.
+Este repositório documenta toda minha pesquisa e implementação de **algoritmos e estruturas de dados**.
 
 ---
 
@@ -23,9 +23,3 @@ Cada diretório contém um projeto específico. Para cada projeto, há:
 | `advanced_data_structures` | Implementação de heaps, tries, e hash tables. |
 
 ---
-
-## 🚀 **Como Usar**
-
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/MateusVasc/algorithms-and-data-structures.git
